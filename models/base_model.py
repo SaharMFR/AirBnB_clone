@@ -5,6 +5,7 @@
 import uuid
 from datetime import datetime
 
+
 class BaseModel:
     """Defines all common attributes/methods for other classes"""
 
@@ -23,6 +24,6 @@ class BaseModel:
     def to_dict(self):
         my_dict = self.__dict__.copy()
         my_dict["__class__"] = type(self).__name__
-        my_dict["created_at"] = self.created_at.isformat()
-        my_dict["updated_at"] = self.updated_at.isfromat()
+        my_dict["created_at"] = self.created_at.isoformat()
+        my_dict["updated_at"] = self.updated_at.isoformat()
         return my_dict
