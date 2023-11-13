@@ -174,8 +174,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        rex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
-        match = re.search(rex, line)
+        regex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
+        match = re.search(regex, line)
         classname = match.group(1)
         uid = match.group(2)
         attribute = match.group(3)
@@ -187,8 +187,8 @@ class HBNBCommand(cmd.Cmd):
         elif uid is None:
             print("** instance id missing **")
         else:
-            key = "{}.{}".format(classname, uid)
-            if key not in storage.all():
+            k = "{}.{}".format(classname, uid)
+            if k not in storage.all():
                 print("** no instance found **")
             elif not attribute:
                 print("** attribute name missing **")
@@ -211,8 +211,8 @@ class HBNBCommand(cmd.Cmd):
                         value = cast(value)
                     except ValueError:
                         pass
-                setattr(storage.all()[key], attribute, value)
-                storage.all()[key].save()
+                setattr(storage.all()[k], attribute, value)
+                storage.all()[k].save()
 
 
 if __name__ == '__main__':
